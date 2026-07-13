@@ -9,8 +9,6 @@ import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { BD_DISTRICTS } from "@/lib/constants";
-import { apiEnabled, ApiError } from "@/lib/api";
-import { registerMerchant } from "@/lib/api/auth";
 
 interface SignupForm {
   shopName: string;
@@ -36,10 +34,9 @@ const empty: SignupForm = {
   pickupAddress: "",
 };
 
-// Merchant self-registration. Uses the real Django API (POST /auth/register/)
-// when NEXT_PUBLIC_API_URL is set — new merchants are created with status
-// PENDING and must be approved by an admin. Falls back to a mock success when
-// no API is configured, so the demo still works standalone.
+// M3 mock merchant registration. Mirrors the M5 backend flow: a new merchant is
+// created with status PENDING and must be approved by an admin. Replaced by
+// POST /api/auth/register/ later.
 export default function SignupPage() {
   const router = useRouter();
   const toast = useToast();
@@ -49,7 +46,7 @@ export default function SignupPage() {
   const set = (key: keyof SignupForm, value: string) =>
     setForm((f) => ({ ...f, [key]: value }));
 
-  const onSubmit = async (e: FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (
       !form.shopName.trim() ||
@@ -70,37 +67,7 @@ export default function SignupPage() {
       toast.error("Passwords do not match");
       return;
     }
-
     setLoading(true);
-
-    if (apiEnabled()) {
-      try {
-        await registerMerchant({
-          shopName: form.shopName.trim(),
-          ownerName: form.ownerName.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          password: form.password,
-          district: form.district,
-          businessType: form.businessType.trim(),
-          pickupAddress: form.pickupAddress.trim(),
-        });
-        toast.success("Registration successful — awaiting admin approval.");
-        router.push("/login");
-      } catch (err) {
-        if (err instanceof ApiError) {
-          const firstFieldError = Object.values(err.errors)[0]?.[0];
-          toast.error(firstFieldError || err.message || "Registration failed");
-        } else {
-          toast.error(
-            `Can't reach the API at ${process.env.NEXT_PUBLIC_API_URL}. Check the server is running.`,
-          );
-        }
-        setLoading(false);
-      }
-      return;
-    }
-
     setTimeout(() => {
       toast.success("Registration successful — awaiting admin approval.");
       router.push("/login");

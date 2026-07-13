@@ -14,15 +14,7 @@ export default function BrandMark({
   className?: string;
   iconClass?: string;
 }) {
-  const { companyName, logoUrl, ready } = useSiteSettings();
-
-  // Don't show the generic fallback badge while we don't yet know whether a
-  // real logo is configured — that would look like a fake logo flashing
-  // before the real one (or the confirmed no-logo state) loads.
-  if (!ready) {
-    return <span className={cn("animate-pulse bg-brown-100/80", className)} />;
-  }
-
+  const { companyName, logoUrl } = useSiteSettings();
   if (logoUrl) {
     return (
       <Image
@@ -31,7 +23,6 @@ export default function BrandMark({
         width={64}
         height={64}
         unoptimized
-        priority
         className={cn("object-contain", className)}
       />
     );

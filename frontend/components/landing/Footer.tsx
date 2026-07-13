@@ -4,23 +4,18 @@ import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useSiteSettings } from "@/lib/site-settings-store";
 import BrandMark from "@/components/ui/BrandMark";
-import Skeleton from "@/components/ui/Skeleton";
 
 const SOCIALS = ["f", "X", "in"];
 
 export default function Footer() {
-  const { companyName: appName, contactEmail, contactPhone, contactAddress, ready } = useSiteSettings();
+  const { companyName: appName, contactEmail, contactPhone, contactAddress } = useSiteSettings();
   return (
     <footer className="bg-brown-800 text-brown-100">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link href="/" className="flex items-center gap-2">
             <BrandMark className="h-9 w-9 rounded-lg" iconClass="h-5 w-5" />
-            {ready ? (
-              <span className="text-lg font-semibold tracking-tight text-white">{appName}</span>
-            ) : (
-              <Skeleton className="h-6 w-32 bg-brown-700" />
-            )}
+            <span className="text-lg font-semibold tracking-tight text-white">{appName}</span>
           </Link>
           <p className="mt-3 text-sm text-brown-200">
             Fast courier &amp; parcel delivery for online businesses across
@@ -81,9 +76,7 @@ export default function Footer() {
 
       <div className="border-t border-brown-700">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-brown-400 sm:flex-row">
-          <div className="flex items-center gap-1">
-            © {new Date().getFullYear()} {ready ? `${appName}.` : <Skeleton className="h-3 w-24 bg-brown-700" />} All rights reserved.
-          </div>
+          <p>© {new Date().getFullYear()} {appName}. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white">Privacy Policy</a>
             <a href="#" className="hover:text-white">Terms of Service</a>

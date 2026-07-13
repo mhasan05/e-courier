@@ -7,7 +7,6 @@ from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.common.views import BaseAPIView
-from apps.merchants.models import MerchantStatus
 
 from .models import User
 from .serializers import (
@@ -58,19 +57,6 @@ class LoginView(BaseAPIView):
         )
         if user is None:
             return Response({"detail": "Invalid email or password.", "errors": {}}, status=401)
-
-        if user.role == "merchant":
-            merchant = getattr(user, "merchant", None)
-            if merchant is not None and merchant.status == MerchantStatus.PENDING:
-                return Response(
-                    {"detail": "Your merchant account is pending admin approval.", "errors": {}},
-                    status=403,
-                )
-            if merchant is not None and merchant.status == MerchantStatus.SUSPENDED:
-                return Response(
-                    {"detail": "Your merchant account has been suspended.", "errors": {}},
-                    status=403,
-                )
 
         data = tokens_for(user)
         data["user"] = UserSerializer(user, context={"request": request}).data

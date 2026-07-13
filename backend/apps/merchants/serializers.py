@@ -64,39 +64,6 @@ class MerchantCreateSerializer(serializers.ModelSerializer):
         return Merchant.objects.create(user=user, **validated)
 
 
-class MerchantRegisterSerializer(serializers.ModelSerializer):
-    """Public self-registration: creates a merchant + login user, PENDING approval."""
-
-    email = serializers.EmailField(write_only=True)
-    password = serializers.CharField(write_only=True, min_length=6)
-    ownerName = serializers.CharField(source="name")
-    shopName = serializers.CharField(source="shop_name")
-    businessType = serializers.CharField(source="business_type", required=False, allow_blank=True)
-    pickupAddress = serializers.CharField(source="address")
-
-    class Meta:
-        model = Merchant
-        fields = [
-            "shopName", "ownerName", "email", "phone", "password",
-            "district", "businessType", "pickupAddress",
-        ]
-
-    def validate_email(self, value):
-        value = value.lower()
-        if User.objects.filter(email__iexact=value).exists():
-            raise serializers.ValidationError("A user with this email already exists.")
-        return value
-
-    def create(self, validated):
-        email = validated.pop("email")
-        password = validated.pop("password")
-        user = User.objects.create_user(
-            email=email, password=password,
-            name=validated.get("name", ""), role=Role.MERCHANT,
-        )
-        return Merchant.objects.create(user=user, **validated)
-
-
 class MerchantUpdateSerializer(serializers.ModelSerializer):
     shopName = serializers.CharField(source="shop_name", required=False)
     businessType = serializers.CharField(source="business_type", required=False, allow_blank=True)

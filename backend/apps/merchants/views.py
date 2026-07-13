@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound, PermissionDenied
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from apps.branches.models import Branch
@@ -17,7 +17,6 @@ from .models import (
 from .serializers import (
     ApiKeySerializer,
     MerchantCreateSerializer,
-    MerchantRegisterSerializer,
     MerchantSerializer,
     MerchantUpdateSerializer,
     WebhookDeliverySerializer,
@@ -57,18 +56,6 @@ class MerchantListView(BaseAPIView):
 
     def post(self, request):
         ser = MerchantCreateSerializer(data=request.data)
-        ser.is_valid(raise_exception=True)
-        merchant = ser.save()
-        return Response(MerchantSerializer(merchant).data, status=201)
-
-
-class MerchantRegisterView(BaseAPIView):
-    """Public merchant self-registration; account starts PENDING admin approval."""
-
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        ser = MerchantRegisterSerializer(data=request.data)
         ser.is_valid(raise_exception=True)
         merchant = ser.save()
         return Response(MerchantSerializer(merchant).data, status=201)
