@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "ref": "TKT-0001",
+    "merchantId": 1,
+    "merchantName": "Abdul Karim",
+    "subject": "Parcel marked delivered but customer didn't receive it",
+    "category": "parcel",
+    "priority": "high",
+    "status": "in_progress",
+    "trackingId": "CMS-2025-100006",
+    "createdAt": "2026-06-20T09:12:00.000Z",
+    "updatedAt": "2026-06-21T04:30:00.000Z",
+    "unreadForAdmin": false,
+    "unreadForMerchant": true,
+    "messages": [
+      {
+        "id": 1,
+        "sender": "merchant",
+        "senderName": "Abdul Karim",
+        "body": "My customer says they never received parcel CMS-2025-100006, but the tracking shows delivered. Can you check with the rider?",
+        "createdAt": "2026-06-20T09:12:00.000Z"
+      },
+      {
+        "id": 2,
+        "sender": "admin",
+        "senderName": "System Admin",
+        "body": "Thanks for reporting. We're checking the delivery proof with the assigned rider and the hub. We'll update you shortly.",
+        "createdAt": "2026-06-21T04:30:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "ref": "TKT-0002",
+    "merchantId": 1,
+    "merchantName": "Abdul Karim",
+    "subject": "How is the COD service charge calculated?",
+    "category": "payment",
+    "priority": "low",
+    "status": "resolved",
+    "createdAt": "2026-06-15T11:00:00.000Z",
+    "updatedAt": "2026-06-16T06:45:00.000Z",
+    "unreadForAdmin": false,
+    "unreadForMerchant": false,
+    "messages": [
+      {
+        "id": 1,
+        "sender": "merchant",
+        "senderName": "Abdul Karim",
+        "body": "Could you explain how the COD charge is calculated on my payouts?",
+        "createdAt": "2026-06-15T11:00:00.000Z"
+      },
+      {
+        "id": 2,
+        "sender": "admin",
+        "senderName": "System Admin",
+        "body": "The COD charge is 1% of the collected amount, deducted before payout. You can see the breakdown on each parcel under the COD page.",
+        "createdAt": "2026-06-16T06:45:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "ref": "TKT-0003",
+    "merchantId": 2,
+    "merchantName": "Nusrat Jahan",
+    "subject": "Pickup was not collected yesterday",
+    "category": "pickup",
+    "priority": "medium",
+    "status": "open",
+    "createdAt": "2026-06-22T13:20:00.000Z",
+    "updatedAt": "2026-06-22T13:20:00.000Z",
+    "unreadForAdmin": true,
+    "unreadForMerchant": false,
+    "messages": [
+      {
+        "id": 1,
+        "sender": "merchant",
+        "senderName": "Nusrat Jahan",
+        "body": "I scheduled a pickup for yesterday afternoon but no rider came. I have 6 parcels waiting. Please arrange a pickup today.",
+        "createdAt": "2026-06-22T13:20:00.000Z"
+      }
+    ]
+  }
+]

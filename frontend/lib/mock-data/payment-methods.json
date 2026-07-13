@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "bKash", "type": "mobile", "isActive": true, "minAmount": 500, "chargePercent": 0, "instructions": "Enter your bKash personal/agent number." },
+  { "id": 2, "name": "Nagad", "type": "mobile", "isActive": true, "minAmount": 500, "chargePercent": 0, "instructions": "Enter your Nagad account number." },
+  { "id": 3, "name": "Rocket", "type": "mobile", "isActive": true, "minAmount": 500, "chargePercent": 0, "instructions": "Enter your Rocket account number." },
+  { "id": 4, "name": "Bank Transfer", "type": "bank", "isActive": true, "minAmount": 1000, "chargePercent": 0, "instructions": "Funds are transferred to your bank account within 1-3 working days." },
+  { "id": 5, "name": "Upay", "type": "mobile", "isActive": false, "minAmount": 500, "chargePercent": 0 }
+]

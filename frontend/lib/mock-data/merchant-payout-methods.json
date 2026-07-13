@@ -1,0 +1,4 @@
+[
+  { "id": 1, "merchantId": 1, "methodId": 1, "methodName": "bKash", "type": "mobile", "accountName": "Abdul Karim", "accountNumber": "01711000001", "isDefault": true },
+  { "id": 2, "merchantId": 1, "methodId": 4, "methodName": "Bank Transfer", "type": "bank", "accountName": "Karim Traders", "accountNumber": "1501203456789", "bankName": "BRAC Bank", "branch": "Dhanmondi", "isDefault": false }
+]

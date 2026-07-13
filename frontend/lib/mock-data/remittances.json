@@ -1,0 +1,4 @@
+[
+  { "id": 1, "branchId": 3, "amount": 3400, "parcelCount": 1, "reference": "RMT-2025-0007", "status": "received", "remittedAt": "2025-06-12", "receivedAt": "2025-06-13" },
+  { "id": 2, "branchId": 5, "amount": 2750, "parcelCount": 1, "reference": "RMT-2025-0011", "status": "pending", "remittedAt": "2025-06-22" }
+]

@@ -1,0 +1,8 @@
+[
+  { "id": 1, "merchantId": 1, "date": "2025-06-18", "amount": 50000, "reference": "TRX-2025-0451", "bankName": "BRAC Bank", "status": "paid" },
+  { "id": 2, "merchantId": 1, "date": "2025-06-05", "amount": 60000, "reference": "TRX-2025-0388", "bankName": "BRAC Bank", "status": "paid" },
+  { "id": 3, "merchantId": 1, "date": "2025-05-22", "amount": 40000, "reference": "TRX-2025-0291", "bankName": "City Bank", "status": "paid" },
+  { "id": 4, "merchantId": 1, "date": "2025-06-22", "amount": 35400, "reference": "—", "bankName": "—", "status": "pending" },
+  { "id": 5, "merchantId": 2, "date": "2025-06-15", "amount": 80000, "reference": "TRX-2025-0420", "bankName": "Dutch-Bangla Bank", "status": "paid" },
+  { "id": 6, "merchantId": 3, "date": "2025-06-19", "amount": 380000, "reference": "TRX-2025-0460", "bankName": "BRAC Bank", "status": "paid" }
+]

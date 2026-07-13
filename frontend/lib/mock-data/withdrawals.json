@@ -1,0 +1,7 @@
+[
+  { "id": 1, "merchantId": 1, "merchantName": "Karim Traders", "amount": 50000, "charge": 0, "payoutMethodId": 1, "payoutLabel": "bKash · 01711000001", "status": "paid", "requestedAt": "2025-06-10", "processedAt": "2025-06-12", "reference": "WD-2025-0012" },
+  { "id": 2, "merchantId": 1, "merchantName": "Karim Traders", "amount": 25000, "charge": 0, "payoutMethodId": 2, "payoutLabel": "Bank Transfer · 1501203456789", "status": "pending", "requestedAt": "2025-06-21" },
+  { "id": 3, "merchantId": 3, "merchantName": "Gadget Bazaar BD", "amount": 120000, "charge": 0, "payoutMethodId": 0, "payoutLabel": "bKash · 01711000003", "status": "approved", "requestedAt": "2025-06-20" },
+  { "id": 4, "merchantId": 2, "merchantName": "Nusrat Beauty Hub", "amount": 15000, "charge": 0, "payoutMethodId": 0, "payoutLabel": "Nagad · 01711000002", "status": "pending", "requestedAt": "2025-06-22" },
+  { "id": 5, "merchantId": 6, "merchantName": "Organic Pantry", "amount": 20000, "charge": 0, "payoutMethodId": 0, "payoutLabel": "Bank Transfer · 2201998877", "status": "rejected", "requestedAt": "2025-06-18", "processedAt": "2025-06-19", "note": "Account name mismatch" }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Jamal Uddin",
+    "phone": "01911000201",
+    "email": "jamal.rider@cms.com",
+    "nid": "1990123456789",
+    "status": "active",
+    "createdAt": "2025-02-10",
+    "branchId": 1
+  },
+  {
+    "id": 2,
+    "name": "Rofiqul Islam",
+    "phone": "01911000202",
+    "email": "rofiqul.rider@cms.com",
+    "nid": "1988987654321",
+    "status": "active",
+    "createdAt": "2025-03-01",
+    "branchId": 2
+  },
+  {
+    "id": 3,
+    "name": "Sohel Rana",
+    "phone": "01911000203",
+    "email": "sohel.rider@cms.com",
+    "nid": "1995112233445",
+    "status": "active",
+    "createdAt": "2025-04-15",
+    "branchId": 4
+  },
+  {
+    "id": 4,
+    "name": "Abdur Rahim",
+    "phone": "01911000204",
+    "email": "rahim.rider@cms.com",
+    "status": "inactive",
+    "createdAt": "2025-05-20",
+    "branchId": 3
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "id": 1,
+    "name": "Dhaka City",
+    "districts": [
+      "Dhaka"
+    ],
+    "regularCharge": 60,
+    "expressCharge": 100,
+    "codChargePercent": 1,
+    "returnCharge": 40,
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "name": "Dhaka Suburb",
+    "districts": [
+      "Gazipur",
+      "Narayanganj",
+      "Narsingdi",
+      "Manikganj",
+      "Munshiganj",
+      "Kishoreganj",
+      "Tangail"
+    ],
+    "regularCharge": 80,
+    "expressCharge": 130,
+    "codChargePercent": 1,
+    "returnCharge": 50,
+    "isActive": true
+  },
+  {
+    "id": 3,
+    "name": "Chattogram",
+    "districts": [
+      "Chattogram",
+      "Cox's Bazar",
+      "Cumilla",
+      "Feni",
+      "Noakhali",
+      "Brahmanbaria",
+      "Chandpur",
+      "Lakshmipur",
+      "Bandarban",
+      "Rangamati",
+      "Khagrachhari"
+    ],
+    "regularCharge": 110,
+    "expressCharge": 170,
+    "codChargePercent": 1,
+    "returnCharge": 70,
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "name": "Sylhet",
+    "districts": [
+      "Sylhet",
+      "Habiganj",
+      "Moulvibazar",
+      "Sunamganj"
+    ],
+    "regularCharge": 120,
+    "expressCharge": 180,
+    "codChargePercent": 1.5,
+    "returnCharge": 70,
+    "isActive": true
+  },
+  {
+    "id": 5,
+    "name": "Rajshahi",
+    "districts": [
+      "Rajshahi",
+      "Bogura",
+      "Pabna",
+      "Natore",
+      "Naogaon",
+      "Joypurhat",
+      "Chapainawabganj",
+      "Sirajganj"
+    ],
+    "regularCharge": 110,
+    "expressCharge": 165,
+    "codChargePercent": 1,
+    "returnCharge": 65,
+    "isActive": true
+  },
+  {
+    "id": 6,
+    "name": "Khulna",
+    "districts": [
+      "Khulna",
+      "Jashore",
+      "Satkhira",
+      "Kushtia",
+      "Bagerhat",
+      "Chuadanga",
+      "Jhenaidah",
+      "Magura",
+      "Meherpur",
+      "Narail"
+    ],
+    "regularCharge": 110,
+    "expressCharge": 170,
+    "codChargePercent": 1,
+    "returnCharge": 65,
+    "isActive": true
+  },
+  {
+    "id": 7,
+    "name": "Barishal",
+    "districts": [
+      "Barishal",
+      "Bhola",
+      "Patuakhali",
+      "Pirojpur",
+      "Jhalokati",
+      "Barguna"
+    ],
+    "regularCharge": 120,
+    "expressCharge": 180,
+    "codChargePercent": 1.5,
+    "returnCharge": 70,
+    "isActive": true
+  },
+  {
+    "id": 8,
+    "name": "Rangpur",
+    "districts": [
+      "Rangpur",
+      "Dinajpur",
+      "Kurigram",
+      "Nilphamari",
+      "Gaibandha",
+      "Lalmonirhat",
+      "Panchagarh",
+      "Thakurgaon"
+    ],
+    "regularCharge": 120,
+    "expressCharge": 185,
+    "codChargePercent": 1,
+    "returnCharge": 70,
+    "isActive": true
+  },
+  {
+    "id": 9,
+    "name": "Mymensingh",
+    "districts": [
+      "Mymensingh",
+      "Jamalpur",
+      "Netrokona",
+      "Sherpur"
+    ],
+    "regularCharge": 100,
+    "expressCharge": 150,
+    "codChargePercent": 1,
+    "returnCharge": 60,
+    "isActive": true
+  },
+  {
+    "id": 10,
+    "name": "Faridpur Region",
+    "districts": [
+      "Faridpur",
+      "Rajbari",
+      "Madaripur",
+      "Gopalganj",
+      "Shariatpur"
+    ],
+    "regularCharge": 100,
+    "expressCharge": 150,
+    "codChargePercent": 1,
+    "returnCharge": 60,
+    "isActive": true
+  }
+]

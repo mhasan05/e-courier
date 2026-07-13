@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: #f8fafc;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: #0f172a;
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01", "calt", "liga";
+}
+
+@layer base {
+  /* Refined SaaS typography: tighter tracking on headings, optical sizing. */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.014em;
+  }
+  h1 { letter-spacing: -0.02em; }
+
+  /* One consistent focus ring across the whole app. */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgb(37 99 235 / 0.55);
+    border-radius: 0.5rem;
+  }
+
+  ::selection {
+    background: rgb(37 99 235 / 0.16);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Subtle grid backdrop for hero / empty surfaces. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(15 23 42 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+/* Thin, subtle scrollbars for sidebars and scroll areas */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgb(100 116 139 / 0.28);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139 / 0.45);
+  background-clip: padding-box;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
