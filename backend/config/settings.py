@@ -20,6 +20,12 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
+# Behind the Cloudflare tunnel (and any TLS-terminating proxy), Django only
+# sees the proxy's plain-HTTP connection. Without this, request.build_absolute_uri()
+# (logo/avatar/attachment URLs) emits http:// even when the public URL is
+# https://, which browsers block as mixed content.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 INSTALLED_APPS = [
     "daphne",  # ASGI server — must precede staticfiles so runserver uses it
     "channels",

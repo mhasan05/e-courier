@@ -6,6 +6,7 @@ import { navForRole, panelLabelForRole } from "@/lib/constants";
 import { useNavBadges } from "@/hooks/useNavBadges";
 import { useSiteSettings } from "@/lib/site-settings-store";
 import BrandMark from "@/components/ui/BrandMark";
+import Skeleton from "@/components/ui/Skeleton";
 import { cn } from "@/lib/utils";
 import type { Role } from "@/types";
 
@@ -18,7 +19,7 @@ export default function Sidebar({ role }: SidebarProps) {
   const pathname = usePathname();
   const items = navForRole(role);
   const badges = useNavBadges(role);
-  const appName = useSiteSettings().companyName;
+  const { companyName: appName, ready } = useSiteSettings();
 
   // The active item is the longest href that matches the current path (exact
   // or as a parent segment), so nested routes highlight just one nav item.
@@ -32,7 +33,13 @@ export default function Sidebar({ role }: SidebarProps) {
       <div className="flex h-16 items-center gap-2.5 px-5">
         <BrandMark className="h-9 w-9 rounded-xl shadow-sm shadow-primary-900/20" />
         <div className="leading-tight">
-          <p className="text-[15px] font-semibold tracking-tight text-brown-900">{appName}</p>
+          <div className="flex h-[19px] items-center">
+            {ready ? (
+              <p className="text-[15px] font-semibold tracking-tight text-brown-900">{appName}</p>
+            ) : (
+              <Skeleton className="h-4 w-24" />
+            )}
+          </div>
           <p className="text-[11px] font-medium uppercase tracking-wide text-brown-400">
             {panelLabelForRole(role)} Panel
           </p>

@@ -8,8 +8,9 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import BrandMark from "@/components/ui/BrandMark";
 import { useToast } from "@/components/ui/Toast";
+import Skeleton from "@/components/ui/Skeleton";
 import { useSiteSettings } from "@/lib/site-settings-store";
-import { MOCK_CREDENTIALS, DEMO_LOGINS } from "@/lib/constants";
+import { MOCK_CREDENTIALS } from "@/lib/constants";
 import { authenticateRider } from "@/lib/deliveryman-store";
 import { setSession, homeForRole } from "@/lib/auth";
 import { apiEnabled, ApiError } from "@/lib/api";
@@ -20,7 +21,7 @@ import { login as apiLogin } from "@/lib/api/auth";
 export default function LoginPage() {
   const router = useRouter();
   const toast = useToast();
-  const { companyName } = useSiteSettings();
+  const { companyName, ready: brandReady } = useSiteSettings();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -50,7 +51,9 @@ export default function LoginPage() {
           setError(
             err.status === 401
               ? "Invalid email/phone or password."
-              : `Login failed (${err.status}): ${err.message}`,
+              : err.status === 403
+                ? err.message
+                : `Login failed (${err.status}): ${err.message}`,
           );
         } else {
           // Network/CORS error — fetch threw before reaching the API.
@@ -102,17 +105,15 @@ export default function LoginPage() {
     }, 500);
   };
 
-  const fillDemo = (demoEmail: string, demoPassword: string) => {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
-    setError("");
-  };
-
   return (
     <div className="w-full max-w-md">
       <div className="mb-6 flex flex-col items-center text-center">
         <BrandMark className="mb-3 h-12 w-12 rounded-2xl shadow-lg shadow-primary-900/25" iconClass="h-6 w-6" />
-        <h1 className="text-2xl font-semibold tracking-tight text-brown-900">{companyName}</h1>
+        {brandReady ? (
+          <h1 className="text-2xl font-semibold tracking-tight text-brown-900">{companyName}</h1>
+        ) : (
+          <Skeleton className="h-8 w-40" />
+        )}
         <p className="text-sm text-brown-500">Sign in to your dashboard</p>
       </div>
 
@@ -155,22 +156,6 @@ export default function LoginPage() {
           </Link>
         </p>
       </form>
-
-      <div className="mt-4 rounded-xl border border-brown-100 bg-white p-4 text-center text-xs text-brown-500">
-        <p className="mb-2 font-medium text-brown-500">Demo accounts — tap to fill</p>
-        <div className="flex flex-wrap justify-center gap-2">
-          {DEMO_LOGINS.map((d) => (
-            <Button
-              key={d.email}
-              size="sm"
-              variant="outline"
-              onClick={() => fillDemo(d.email, d.password)}
-            >
-              {d.label}
-            </Button>
-          ))}
-        </div>
-      </div>
 
       <p className="mt-4 text-center text-sm text-brown-500">
         Are you a customer?{" "}

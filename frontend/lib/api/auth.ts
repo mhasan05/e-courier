@@ -37,3 +37,18 @@ export const me = () => apiGet<ApiUser>("/auth/me/");
 
 export const changePassword = (current_password: string, new_password: string) =>
   apiPost<{ detail: string }>("/auth/change-password/", { current_password, new_password });
+
+export interface MerchantRegisterPayload {
+  shopName: string;
+  ownerName: string;
+  email: string;
+  phone: string;
+  password: string;
+  district: string;
+  businessType?: string;
+  pickupAddress: string;
+}
+
+// Public merchant self-registration. New merchants start PENDING admin approval.
+export const registerMerchant = (data: MerchantRegisterPayload) =>
+  apiPost("/auth/register/", data);

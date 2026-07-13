@@ -2,12 +2,14 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Truck, Zap, ShieldCheck, MapPin } from "lucide-react";
 import { useSiteSettings } from "@/lib/site-settings-store";
+import Skeleton from "@/components/ui/Skeleton";
 
 // Split-screen auth shell: branded panel on the left, form on the right.
 export default function AuthLayout({ children }: { children: ReactNode }) {
-  const { companyName: appName, logoUrl } = useSiteSettings();
+  const { companyName: appName, logoUrl, ready } = useSiteSettings();
   return (
     <div className="flex min-h-screen bg-canvas">
       {/* Brand panel — desktop only */}
@@ -16,7 +18,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-primary-900/40 blur-3xl" />
 
-        <div className="relative flex items-center gap-2.5">
+        <Link href="/" className="relative flex items-center gap-2.5">
           <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/25 backdrop-blur">
             {logoUrl ? (
               <Image src={logoUrl} alt={appName} width={40} height={40} unoptimized className="h-full w-full object-contain" />
@@ -24,8 +26,12 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               <Truck className="h-5 w-5" />
             )}
           </span>
-          <span className="text-lg font-semibold tracking-tight">{appName}</span>
-        </div>
+          {ready ? (
+            <span className="text-lg font-semibold tracking-tight">{appName}</span>
+          ) : (
+            <Skeleton className="h-6 w-32 bg-white/15" />
+          )}
+        </Link>
 
         <div className="relative max-w-md">
           <h2 className="text-4xl font-semibold leading-tight tracking-tight">
@@ -57,9 +63,13 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           </ul>
         </div>
 
-        <p className="relative text-xs text-white/50">
-          © {new Date().getFullYear()} {appName}. All rights reserved.
-        </p>
+        <div className="relative text-xs text-white/50">
+          {ready ? (
+            `© ${new Date().getFullYear()} ${appName}. All rights reserved.`
+          ) : (
+            <Skeleton className="h-3 w-40 bg-white/15" />
+          )}
+        </div>
       </aside>
 
       {/* Form area */}
