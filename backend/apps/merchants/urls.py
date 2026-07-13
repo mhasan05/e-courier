@@ -7,12 +7,14 @@ from .views import (
     MerchantDetailView,
     MerchantListView,
     MerchantMeView,
+    MerchantRegisterView,
     MerchantStatusView,
     MerchantWebhookDeliveriesView,
     MerchantWebhookView,
 )
 
 urlpatterns = [
+    path("auth/register/", MerchantRegisterView.as_view(), name="merchant-register"),
     path("merchants/", MerchantListView.as_view(), name="merchant-list"),
     path("merchants/me/", MerchantMeView.as_view(), name="merchant-me"),
     path("merchant/api-keys/", MerchantApiKeyListCreateView.as_view(), name="merchant-api-keys"),

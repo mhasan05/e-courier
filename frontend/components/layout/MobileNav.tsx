@@ -8,6 +8,7 @@ import { navForRole } from "@/lib/constants";
 import { useNavBadges } from "@/hooks/useNavBadges";
 import { useSiteSettings } from "@/lib/site-settings-store";
 import BrandMark from "@/components/ui/BrandMark";
+import Skeleton from "@/components/ui/Skeleton";
 import { cn } from "@/lib/utils";
 import type { Role } from "@/types";
 
@@ -18,7 +19,7 @@ export default function MobileNav({ role }: { role: Role }) {
   const pathname = usePathname();
   const items = navForRole(role);
   const badges = useNavBadges(role);
-  const appName = useSiteSettings().companyName;
+  const { companyName: appName, ready } = useSiteSettings();
 
   const activeHref = items
     .map((i) => i.href)
@@ -46,7 +47,11 @@ export default function MobileNav({ role }: { role: Role }) {
             <div className="flex h-16 items-center justify-between border-b border-brown-100 px-5">
               <div className="flex items-center gap-2">
                 <BrandMark className="h-9 w-9 rounded-lg" iconClass="h-5 w-5" />
-                <span className="text-sm font-semibold text-brown-800">{appName}</span>
+                {ready ? (
+                  <span className="text-sm font-semibold text-brown-800">{appName}</span>
+                ) : (
+                  <Skeleton className="h-5 w-24" />
+                )}
               </div>
               <button
                 onClick={() => setOpen(false)}

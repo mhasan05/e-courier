@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { homeForRole } from "@/lib/auth";
 import { useSiteSettings } from "@/lib/site-settings-store";
 import BrandMark from "@/components/ui/BrandMark";
+import Skeleton from "@/components/ui/Skeleton";
 
 const LINKS = [
   { label: "Features", href: "#features" },
@@ -18,14 +19,18 @@ const LINKS = [
 export default function LandingNav() {
   const [open, setOpen] = useState(false);
   const { session } = useAuth();
-  const appName = useSiteSettings().companyName;
+  const { companyName: appName, ready } = useSiteSettings();
 
   return (
     <header className="sticky top-0 z-40 border-b border-brown-100 bg-canvas/80 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <BrandMark className="h-9 w-9 rounded-xl shadow-sm" iconClass="h-5 w-5" />
-          <span className="text-lg font-semibold tracking-tight text-brown-900">{appName}</span>
+          {ready ? (
+            <span className="text-lg font-semibold tracking-tight text-brown-900">{appName}</span>
+          ) : (
+            <Skeleton className="h-6 w-32" />
+          )}
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">
