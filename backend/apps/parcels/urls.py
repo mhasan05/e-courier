@@ -1,0 +1,53 @@
+from django.urls import path
+
+from .views import (
+    BagDispatchView,
+    BaggableParcelsView,
+    BagListCreateView,
+    BagReceiveView,
+    TripActiveView,
+    TripCloseView,
+    TripDeliverView,
+    TripFailView,
+    TripListCreateView,
+    TripPickupView,
+    ParcelAcceptView,
+    ParcelAssignView,
+    ParcelDetailView,
+    ParcelDispatchView,
+    ParcelImportView,
+    ParcelListView,
+    ParcelRejectView,
+    ParcelReturnView,
+    ParcelStatusView,
+    ParcelSubmitToHubView,
+    RecipientStatsView,
+    TrackView,
+)
+
+urlpatterns = [
+    path("parcels/", ParcelListView.as_view(), name="parcel-list"),
+    path("parcels/import/", ParcelImportView.as_view(), name="parcel-import"),
+    path("parcels/recipient-stats/", RecipientStatsView.as_view(), name="recipient-stats"),
+    path("parcels/<int:pk>/", ParcelDetailView.as_view(), name="parcel-detail"),
+    path("parcels/<int:pk>/status/", ParcelStatusView.as_view(), name="parcel-status"),
+    path("parcels/<int:pk>/assign/", ParcelAssignView.as_view(), name="parcel-assign"),
+    path("parcels/<int:pk>/dispatch/", ParcelDispatchView.as_view(), name="parcel-dispatch"),
+    path("parcels/<int:pk>/submit-to-hub/", ParcelSubmitToHubView.as_view(), name="parcel-submit-to-hub"),
+    path("parcels/<int:pk>/accept/", ParcelAcceptView.as_view(), name="parcel-accept"),
+    path("parcels/<int:pk>/reject/", ParcelRejectView.as_view(), name="parcel-reject"),
+    path("parcels/<int:pk>/return/", ParcelReturnView.as_view(), name="parcel-return"),
+    path("track/<str:tracking_id>/", TrackView.as_view(), name="parcel-track"),
+    # Bags / line-haul manifests
+    path("bags/", BagListCreateView.as_view(), name="bag-list"),
+    path("bags/baggable/", BaggableParcelsView.as_view(), name="bag-baggable"),
+    path("bags/<int:pk>/dispatch/", BagDispatchView.as_view(), name="bag-dispatch"),
+    path("bags/<int:pk>/receive/", BagReceiveView.as_view(), name="bag-receive"),
+    # Zone-rider trips / runsheet
+    path("trips/", TripListCreateView.as_view(), name="trip-list"),
+    path("trips/active/", TripActiveView.as_view(), name="trip-active"),
+    path("trips/<int:pk>/deliver/", TripDeliverView.as_view(), name="trip-deliver"),
+    path("trips/<int:pk>/fail/", TripFailView.as_view(), name="trip-fail"),
+    path("trips/<int:pk>/pickup/", TripPickupView.as_view(), name="trip-pickup"),
+    path("trips/<int:pk>/close/", TripCloseView.as_view(), name="trip-close"),
+]
